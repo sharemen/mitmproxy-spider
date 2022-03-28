@@ -15,6 +15,11 @@ proxy_ip: #动态ip代理配置
       reload_time: 60 #重新申请ip的时间，单位：S
 ```
 ### `2.` 支持动态更换UA，基于Fake_useragent
+```
+  random_ua:
+    enable: 0   #是否启用随机usr-agent 基于fake-useragent
+    reload_time: 60 #每个ure-agent的有效期 单位：S
+```
 
 ### `3.` 支持mysql持久化（需要自行写持久逻辑，工程包含了依赖库与mysql工具类）
 
@@ -22,12 +27,8 @@ proxy_ip: #动态ip代理配置
 
 
 
-```
-  random_ua:
-    enable: 0   #是否启用随机usr-agent 基于fake-useragent
-    reload_time: 60 #每个ure-agent的有效期 单位：S
-```
-##二、使用说明
+
+##`二、`使用说明
 ### `1.`启动服务
 运行run_spider.py启动代理服务
 会根据配置文件中的配置的端口启动代理监听
@@ -41,7 +42,7 @@ spider:
 在启动代理服务后，会自动生成mitmproxy的证书，然后复制访问目标网站的设备上，并设置证书信任  
 可以参考：https://blog.csdn.net/wywinstonwy/article/details/106541373  
 
-### `3.`拦截response
+### `3.`拦截response  
 这里需要根据mitmproxy的框架要求开发自己的拦截插件  
 可以参考capture.DemoCapture.py  
 主要通过response方法拦截响应内容做解析入库的处理（需要自行开发）  
@@ -50,7 +51,7 @@ spider:
 的分层处理模式老进行抓取数据处理
 ---
 然后将开发好的XXXCapture，通过修改run_spider代码，添加到处理链中，如下所示  
-可以添加多了，按顺序处理，但同一个url最好只在一个capture中处理  
+可以添加多个，按顺序处理，但同一个url最好只在一个capture中处理  
 ```
 def start():
     print("温馨提示：服务IP {} 端口 {} 请确保代理已配置".format(ip, port))
