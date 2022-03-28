@@ -54,7 +54,7 @@ spider:
 主要通过response方法拦截响应内容做解析入库的处理（需要自行开发）  
 ---
 推荐通过 capture将 response.text -> parser类处理得数据对象data -> servce 进行持久化
-的分层处理模式来进行抓取数据处理  
+的分层处理模式来进行抓取数据处理   
 ---
 然后将开发好的XXXCapture，通过修改run_spider代码，添加到处理链中，如下所示  
 可以添加多个，按顺序处理，但同一个url最好只在一个capture中处理  
