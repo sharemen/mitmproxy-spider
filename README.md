@@ -1,6 +1,15 @@
 
 # 基于mitmproxy的抓取代理服务
 本项目只包含代理部分，需要自己做响应内容的解析，持久化部分的开发  
+启动项目，并通过将浏览器（也可以是其他工具比如selenium）的代理服务器设置为代理服务启动ip与监听端口，就可以拦截到响应内容  
+之后便根据内容做各种处理，可以通过修改代码，来限定只拦截某个域名或某个url的请求响应内容:  
+``` 
+def response(self, flow: mitmproxy.http.HTTPFlow):
+
+        url = flow.request.url
+        if 'xxxx' in url:
+            do something
+```
 本项目包含mysql操作工具包，具体使用可以参考项目中的demo  
 本项目包含了对配置文件的解析，引用，具体使用可以参考项目中的config类  
 
@@ -34,7 +43,7 @@ spider:
   service_port: 9527 # 服务的端口
 ```
  
-### `2.`启动服务
+### `2.`客户端系信任证书
 客户端安装mitmproxy的https证书  
 在启动代理服务后，会自动生成mitmproxy的证书，然后复制访问目标网站的设备上，并设置证书信任  
 可以参考：https://blog.csdn.net/wywinstonwy/article/details/106541373  

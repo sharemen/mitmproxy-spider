@@ -53,6 +53,8 @@ class DemoCapture:
     def response(self, flow: mitmproxy.http.HTTPFlow):
 
         url = flow.request.url
+        #if 'xxxx' in url:
+        #    拦截特定url
         print(flow.response.text)
         data = parseData4html(flow.response.text)
         saveDemo(data)
