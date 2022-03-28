@@ -1,8 +1,8 @@
 
 # 基于mitproxy的抓取代理服务
-本项目只包含代理部分，需要自己做响应内容的解析，持久化部分的开发
-本项目包含mysql操作工具包，具体使用可以参考项目中的demo
-本项目包含了对配置文件的解析，引用，具体使用可以参考项目中的config类
+本项目只包含代理部分，需要自己做响应内容的解析，持久化部分的开发  
+本项目包含mysql操作工具包，具体使用可以参考项目中的demo  
+本项目包含了对配置文件的解析，引用，具体使用可以参考项目中的config类  
 
 ## `一、 `支持特性
 ### `1.` 支持配置二级代理获取动态IP
@@ -37,20 +37,20 @@ spider:
 ```
 
 ### `2.`启动服务
-客户端安装mitmproxy的https证书
-在启动代理服务后，会自动生成mitmproxy的证书，然后复制访问目标网站的设备上，并设置证书信任
-可以参考：https://blog.csdn.net/wywinstonwy/article/details/106541373
+客户端安装mitmproxy的https证书  
+在启动代理服务后，会自动生成mitmproxy的证书，然后复制访问目标网站的设备上，并设置证书信任  
+可以参考：https://blog.csdn.net/wywinstonwy/article/details/106541373  
 
 ### `3.`拦截response
-这里需要根据mitmproxy的框架要求开发自己的拦截插件
-可以参考capture.DemoCapture.py
-主要通过response方法拦截响应内容做解析入库的处理（需要自行开发）
+这里需要根据mitmproxy的框架要求开发自己的拦截插件  
+可以参考capture.DemoCapture.py  
+主要通过response方法拦截响应内容做解析入库的处理（需要自行开发）  
 ---
 推荐通过 capture,讲 response.text -> parser类处理得数据对象data -> servce 进行持久化
 的分层处理模式老进行抓取数据处理
 ---
-然后将开发好的XXXCapture，通过修改run_spider代码，添加到处理链中，如下所示
-可以添加多了，按顺序处理，但同一个url最好只在一个capture中处理
+然后将开发好的XXXCapture，通过修改run_spider代码，添加到处理链中，如下所示  
+可以添加多了，按顺序处理，但同一个url最好只在一个capture中处理  
 ```
 def start():
     print("温馨提示：服务IP {} 端口 {} 请确保代理已配置".format(ip, port))
@@ -63,8 +63,8 @@ def start():
     dumpMaster.run()
 ```
 ### `4.`mysql处理(引用的其他作者开源工具)
-通过MysqlDB工具类，支持添加，修改、查询基本操作
-具体使用可参考：services.DemoService.py
+通过MysqlDB工具类，支持添加，修改、查询基本操作  
+具体使用可参考：services.DemoService.py  
 
 ### `5.`配置信息处理(引用的其他作者开源工具)
 可以参考config.config.py
