@@ -44,7 +44,7 @@ spider:
 ```
  
 ### `2.`客户端配置信任证书
-客户端安装mitmproxy的https证书  
+客户端需要安装，并信任mitmproxy的https证书 ，才可以通过代理访问https的网址  
 在启动代理服务后，会自动生成mitmproxy的证书，然后复制访问目标网站的设备上，并设置证书信任  
 可以参考：https://blog.csdn.net/wywinstonwy/article/details/106541373  
 
