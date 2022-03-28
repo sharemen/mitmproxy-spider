@@ -1,0 +1,26 @@
+mysqldb:
+  ip: ""
+  port: 3306
+  db:
+  user:
+  passwd: ""
+
+log:
+  level: INFO
+  to_file: false
+  log_path: ./logs/spider.log
+
+mitm:
+  log_level: 0 # mitm框架日志的打印级别。值在0~3之间，值越大，输出的日志信息越详细，默认是1。详见：https://docs.mitmproxy.org/stable/concepts-options/
+
+spider:
+  service_port: 9527 # 服务的端口
+  random_ua:
+    enable: 0   #是否启用随机usr-agent 基于fake-useragent
+    reload_time: 60 #每个ure-agent的有效期 单位：S
+  proxy_ip: #动态ip代理配置
+    enable: 0 #是否启用动态ip代理
+      url:
+      proxy_user:
+      proxy_pass:
+      reload_time: 60 #重新申请ip的时间，单位：S
