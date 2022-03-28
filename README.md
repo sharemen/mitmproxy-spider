@@ -43,7 +43,7 @@ spider:
   service_port: 9527 # 服务的端口
 ```
  
-### `2.`客户端系信任证书
+### `2.`客户端配置信任证书
 客户端安装mitmproxy的https证书  
 在启动代理服务后，会自动生成mitmproxy的证书，然后复制访问目标网站的设备上，并设置证书信任  
 可以参考：https://blog.csdn.net/wywinstonwy/article/details/106541373  
